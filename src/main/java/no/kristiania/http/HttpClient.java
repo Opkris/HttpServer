@@ -28,16 +28,16 @@ public class HttpClient {
       return new HttpClientResponse(statusLine);
   }
 
-    private String readLine(InputStream inputStream) throws IOException {
-            StringBuilder line = new StringBuilder();
-            int c;
-            while((c = inputStream.read()) != -1){
-                if(c == '\r'){
-                    inputStream.read();
-                    break;
-                }
-                line.append((char)c);
+  private String readLine(InputStream inputStream) throws IOException {
+        StringBuilder line = new StringBuilder();
+        int c;
+        while((c = inputStream.read()) != -1){
+            if(c == '\r'){
+                inputStream.read();
+                break;
             }
-            return line.toString();
-    }
+            line.append((char)c);
+        }
+        return line.toString();
+  }
 } //end HttpClient**/
