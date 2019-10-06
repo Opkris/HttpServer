@@ -1,17 +1,14 @@
 package no.kristiania.http;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
 
 public class HttpClient {
-
     private final String hostname;
     private final int port;
     private final String requestTarget;
 
     public HttpClient(String hostname, int port, String requestTarget){
-
         this.hostname = hostname;
         this.port = port;
         this.requestTarget = requestTarget;
@@ -30,18 +27,17 @@ public class HttpClient {
 
       return new HttpClientResponse(statusLine);
   }
-  private String readLine(InputStream inputStream) throws IOException {
-        StringBuilder line = new StringBuilder();
-        int c;
-        while((c = inputStream.read()) != -1){
-            if(c == '\r'){
-                inputStream.read();
-                break;
+
+    private String readLine(InputStream inputStream) throws IOException {
+            StringBuilder line = new StringBuilder();
+            int c;
+            while((c = inputStream.read()) != -1){
+                if(c == '\r'){
+                    inputStream.read();
+                    break;
+                }
+                line.append((char)c);
             }
-            line.append((char)c);
-        }
-        return line.toString();
-  }
-
-
+            return line.toString();
+    }
 } //end HttpClient**/
