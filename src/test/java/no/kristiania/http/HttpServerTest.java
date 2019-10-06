@@ -19,7 +19,7 @@ class HttpServerTest {
     void shouldReturnStatusCode401() throws IOException {
         HttpServer server = new HttpServer(0);
         server.start();
-        HttpClient client = new HttpClient("localhost", server.getPort(), "/echo");
+        HttpClient client = new HttpClient("localhost", server.getPort(), "/echo?status=401");
         assertEquals(401,client.execute().getStatusCode());
     }
 

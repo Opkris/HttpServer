@@ -24,7 +24,7 @@ public class HttpServer {
         try {
             Socket socket = serverSocket.accept();
 
-            String requestLine = HttpClient.readLine(socket.getInputStream());
+            String requestLine = HttpClientResponse.readLine(socket.getInputStream());
 
             String statusCode = "200";
 
@@ -33,13 +33,15 @@ public class HttpServer {
             if(questionPos != -1) {
                 String query = requestTarget.substring(questionPos);
                 int equalsPos = query.indexOf('=');
-                String parameterValue = query.substring(equalsPos +1);
+                String parameterValue = query.substring(equalsPos+1);
                 statusCode = parameterValue;
             }
 
+            HttpServerRequest request = new HttpServerRequest();
+
 
             socket.getOutputStream().write(("HTTP/1.0 " + statusCode + " OK\r\n" +
-                    "Content-length: 12 \r\n" +
+                    "Content-length: 12\r\n" +
                     "\r\n" +
                     "Hello World!").getBytes());
         } catch (IOException e) {
