@@ -1,0 +1,14 @@
+package no.kristiania.http;
+
+public class HttpClientResponse {
+    private String statusLine;
+
+    public HttpClientResponse(String statusLine) {
+
+        this.statusLine = statusLine;
+    }
+
+    public int getStatusCode() {
+        return Integer.parseInt(statusLine.split(" ")[1]);
+    }
+}
